@@ -17,6 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
-    "install": "^0.10.1"
+    "install": "^0.10.1",
+    "mkdirp": "^0.5.1"
   }
 }

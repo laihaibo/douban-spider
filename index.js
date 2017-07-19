@@ -1,10 +1,9 @@
 'use strict';
 
-const http = require('http'),
-    https = require('https'),
+const https = require('https'),
     fs = require('fs'), // 用于读写文件
-    path = require('path'),
-    cheerio = require('cheerio');
+    cheerio = require('cheerio'),
+    mkdirp = require('mkdirp');
 
 const saveData = require('./utils/saveData');
 const downloadImg = require('./utils/downloadImg');
@@ -69,12 +68,20 @@ const doSpider = async() => {
         let pageSize = 25;
         let pages = Math.ceil(250 / pageSize);
         let movies = [];
+        let imgPath = './img/';
         for (let i = 0; i < pages; i++) {
             let result = await spider(i * 25);
             movies = [...movies, ...result];
         }
         saveData('./data.json', movies);
-        // movies.map(movie => downloadImg('../img/', movie.picUrl));
+
+        // 存储图片， 应该要先查看目录是否存在
+        mkdirp(imgPath, function (err) {
+            if (err) {
+                console.log(err);
+            }
+        });
+        movies.map(movie => downloadImg(imgPath, movie.picUrl));
     } catch (error) {
         console.log(error);
     }
