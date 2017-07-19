@@ -1,0 +1,22 @@
+{
+  "name": "douban-spider",
+  "version": "1.0.0",
+  "description": "a nodejs spider for douban movie",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "spider",
+    "douban",
+    "movie",
+    "nodejs"
+  ],
+  "author": "laihaibo",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "install": "^0.10.1"
+  }
+}
